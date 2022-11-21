@@ -1,4 +1,5 @@
 import {Grid, Input, Text} from "@nextui-org/react";
+import BubbleMap from "../components/bubble-map";
 
 const TokenHolders = () => {
     return (
@@ -22,6 +23,8 @@ const TokenHolders = () => {
                     zIndex: "var(--nextui-zIndices-1)", pointerEvents: "none", maxHeight: "1000px" ,bottom: "-20%", left: "-10%", right: "-50%"}}
                 src={"https://nextui.org/gradient-right-dark.svg"}
             />
+
+            <BubbleMap></BubbleMap>
 
         </>
     );
