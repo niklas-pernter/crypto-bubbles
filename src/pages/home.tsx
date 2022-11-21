@@ -1,5 +1,5 @@
 import {Outlet} from "react-router-dom";
-import {Button, Link, Navbar, Text} from "@nextui-org/react";
+import {Container, Button, Link, Navbar, Text} from "@nextui-org/react";
 import {Box} from "../components/design/box";
 import {AcmeLogo} from "../components/design/logo";
 
@@ -67,7 +67,10 @@ const Home = () => {
                     }
                 </Navbar.Collapse>
             </Navbar>
-            <Outlet></Outlet>
+            <Container lg>
+                <Outlet></Outlet>
+
+            </Container>
 
         </Box>
     );
