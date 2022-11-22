@@ -1,5 +1,6 @@
 import {Container, Dropdown, Link, Navbar, Text, Image} from "@nextui-org/react";
 import { useState, useMemo } from "react";
+import {Constants} from '../util/constants'
 
 interface NetworkDropdownType {
     name: string,
@@ -16,7 +17,12 @@ const networks = [
 ] as NetworkDropdownType[]
 
 const NetworkSelector = () => {
-    const [selected, setSelected] = useState(networks[0].name);
+    const [selected, setSelected] = useState(localStorage.getItem(Constants.LOCALSTORAGE_SELECTED_NETWORK ?? networks[0].name));
+
+    const handleChange = (newSelected: string) => {
+        localStorage.setItem(Constants.LOCALSTORAGE_SELECTED_NETWORK, newSelected)
+        setSelected(newSelected)
+    }
 
     return (
         <Dropdown>
@@ -33,7 +39,7 @@ const NetworkSelector = () => {
                     selectionMode="single"
                     selectedKeys={selected}
                     //@ts-ignore
-                    onSelectionChange={(e) => setSelected(e.currentKey)}
+                    onSelectionChange={(e) => handleChange(e.currentKey)}
                 >
                     {networks.map(network => 
                             <Dropdown.Item 
