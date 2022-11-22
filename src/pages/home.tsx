@@ -1,10 +1,11 @@
 import {Outlet} from "react-router-dom";
-import {Container, Button, Link, Navbar, Text} from "@nextui-org/react";
+import {Container, Button, Link, Navbar, Text, Loading} from "@nextui-org/react";
 import {Box} from "../components/design/box";
 import {AcmeLogo} from "../components/design/logo";
 
 import { useTheme as useNextTheme } from 'next-themes'
 import { Switch, useTheme } from '@nextui-org/react'
+import NetworkSelector from "../components/network-selector";
 
 interface NavLink {
     label: string,
@@ -37,16 +38,19 @@ const Home = () => {
                 </Navbar.Brand>
                 <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
                     {links.map((link) =>
-                            <Navbar.Link href={link.uri}>{link.label}</Navbar.Link>
+                            <Navbar.Link key={link.label} href={link.uri}>{link.label}</Navbar.Link>
                         )
                     }
 
                 </Navbar.Content>
                 <Navbar.Content>
-
                     <Navbar.Item>
-                        <Button auto flat as={Link} href="#">
+                        <NetworkSelector></NetworkSelector>
+                    </Navbar.Item>
+                    <Navbar.Item>
+                        <Button flat as={Link} href="#">
                             Connect Wallet
+                            
                         </Button>
                     </Navbar.Item>
                 </Navbar.Content>
