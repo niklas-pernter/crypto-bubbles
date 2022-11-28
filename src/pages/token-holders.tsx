@@ -2,12 +2,14 @@ import {Grid, Input, Text, Button, Loading} from "@nextui-org/react";
 import BubbleMap from "../components/bubble-map";
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RestrictedComponent } from "../components/restricted-component";
+import { BscClient } from "../rest/bsc-client";
 
 const TokenHolders = () => {
-    const [wallet, setWallet] = useState("");
+    const [wallet, setWallet] = useState("0x3b248CEfA87F836a4e6f6d6c9b42991b88Dc1d58");
     const [isLoading, setIsLoading] = useState(false);
+
 
 
     return (
@@ -21,6 +23,7 @@ const TokenHolders = () => {
                         onChange={(e) => setWallet(e.target.value)}
                         bordered
                         width="100%"
+                        value={wallet}
                         size="xl"
                         clearable
                         placeholder="Token Address" 
@@ -28,7 +31,7 @@ const TokenHolders = () => {
                     />
                 </Grid>
                 <Grid xs css={{d: "flex", ai: "center"}} >
-                    <Button   size="lg" shadow color="gradient" auto onClick={() => console.log(wallet)}>
+                    <Button   size="lg" shadow color="gradient" auto >
                         Search
 
                         <RestrictedComponent condition={isLoading}>
@@ -43,7 +46,7 @@ const TokenHolders = () => {
                 src={"https://nextui.org/gradient-right-dark.svg"}
             />
 
-            <BubbleMap></BubbleMap>
+            <BubbleMap ></BubbleMap>
 
         </>
     );

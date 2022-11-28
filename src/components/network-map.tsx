@@ -20,7 +20,7 @@ const generateData = (baseval: number, count: number, yrange: any) => {
 
 const createApexSeries = (): any => {
     return [{
-        name: 'main',
+        name: 'Bubble1',
         data: generateData(new Date('11 Feb 2017 GMT').getTime(), 20, {
             min: 10,
             max: 60
